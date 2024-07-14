@@ -9,7 +9,10 @@ class Controll {
   }
 
   createControllElement() {
-    this.controll.append(this.playPause.createButtonElement(), this.volume.createVolumeBarElement());
+    this.controll.append(
+      this.playPause.createButtonElement(), 
+      this.volume.createVolumeBarElement()
+    );
     this.controll.classList.add('vdp-controll');
     return this.controll;
   }
