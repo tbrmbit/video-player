@@ -1,4 +1,4 @@
-import { transformValueToAudioFormat } from "../utils/math-video";
+import { transformValueToAudioFormat } from "../utils/math-video.js";
 
 class VolumeBar {
   SLIDER_CHANGE_EVENT = new CustomEvent('slider_change', { bubbles: true });

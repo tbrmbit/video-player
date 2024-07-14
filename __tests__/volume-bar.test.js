@@ -1,5 +1,5 @@
 import VolumeBar from "../js/video-player/volume-bar";
-import { transformValueToAudioFormat } from "../js/utils/math-video";
+import { transformValueToAudioFormat } from "../js/utils/math-video.js";
 
 describe("VolumeBar", () => {
   let volumeBar;
