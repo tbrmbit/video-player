@@ -1,3 +1,5 @@
+import { transformValueToAudioFormat } from "../utils/math-video";
+
 class VolumeBar {
   SLIDER_CHANGE_EVENT = new CustomEvent('slider_change', { bubbles: true });
 
@@ -19,12 +21,8 @@ class VolumeBar {
   }
 
   handlerChange(e) {
-    this.volume_value = this.transformValueToAudioFormat(e.target.value);
+    this.volume_value = transformValueToAudioFormat(e.target.value);
     e.target.dispatchEvent(this.SLIDER_CHANGE_EVENT);
-  }
-
-  transformValueToAudioFormat(value) {
-    return ((value / 100) * 1);
   }
 }
 
