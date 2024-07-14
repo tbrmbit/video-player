@@ -9,7 +9,7 @@ class Poster {
   }
 
   addPoster() {
-    return createPosterElement();
+    return this.createPosterElement();
   }
 
   setSrc(src) {
