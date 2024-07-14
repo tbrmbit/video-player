@@ -16,7 +16,7 @@ class Player {
   initPlayer() {
     this.poster.setSrc(this.video_data.poster);
     this.video_container.append(
-      this.createVideoElement(),
+      this.createVideoElement(this.video_data.src),
       this.poster.createPosterElement(),
       this.titleBar.createTitleBarElement(),
       this.controll.createControllElement()
@@ -72,8 +72,8 @@ class Player {
     this.updatePauseControll();
   }
 
-  createVideoElement() {
-    let source = this.createSourceElement(this.video_data.src);
+  createVideoElement(src_video) {
+    let source = this.createSourceElement(src_video);
     this.video.appendChild(source);
     this.video.classList.add("vdp-player");
     return this.video;
