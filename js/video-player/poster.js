@@ -35,6 +35,10 @@ class Poster {
   openPoster() {
     this.pictureContainer.classList.remove("vdp--invisible");
   }
+
+  getPosterOpen() {
+    return !this.pictureContainer.classList.contains("vdp--invisible");
+  }
 }
 
 export default Poster;

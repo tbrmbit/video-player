@@ -3,18 +3,28 @@ import VolumeBar from "./volume-bar.js";
 
 class Controll {
   constructor() {
-    this.controll = document.createElement('div');
+    this.controll = document.createElement("div");
     this.playPause = new PlayPause();
     this.volume = new VolumeBar();
   }
 
   createControllElement() {
     this.controll.append(
-      this.playPause.createButtonElement(), 
+      this.playPause.createButtonElement(),
       this.volume.createVolumeBarElement()
     );
-    this.controll.classList.add('vdp-controll');
+    this.controll.classList.add("vdp-controll");
     return this.controll;
+  }
+
+  showControll() {
+    this.controll.classList.add("vdp-controll-showup");
+    this.controll.classList.remove("vdp-controll-down");
+  }
+
+  hiddenControll() {
+    this.controll.classList.remove("vdp-controll-showup");
+    this.controll.classList.add("vdp-controll-down");
   }
 
   updateControll(event) {

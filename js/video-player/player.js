@@ -11,6 +11,7 @@ class Player {
     this.poster = new Poster();
     this.titleBar = new TitleBar(this.video_data.title);
     this.controll = new Controll();
+    this.isPlayed = false;
   }
 
   initPlayer() {
@@ -40,6 +41,29 @@ class Player {
       e.preventDefault();
       this.video.volume = this.controll.volume.volume_value;
     });
+
+    this.video_container.addEventListener(
+      "mouseover",
+      this.onMouseOverHandler.bind(this)
+    );
+    this.video_container.addEventListener(
+      "mouseout",
+      this.onMouseOutHandler.bind(this)
+    );
+  }
+
+  addListenerToVideoEvents() {
+    this.video.addEventListener("ended", this.onEndedVideo.bind(this));
+    this.video.addEventListener("error", this.onErrorVideo);
+    this.video.addEventListener("playing", this.onPlayingVideo.bind(this));
+    this.video.addEventListener("pause", this.onPauseVideo.bind(this));
+  }
+
+  removeListenerToVideoEvents() {
+    this.video.removeEventListener("ended", this.onEndedVideo.bind(this));
+    this.video.removeEventListener("error", this.onErrorVideo);
+    this.video.removeEventListener("playing", this.onPlayingVideo.bind(this));
+    this.video.removeEventListener("pause", this.onPauseVideo.bind(this));
   }
 
   updatePlayControll() {
@@ -54,14 +78,24 @@ class Player {
     this.video.pause();
   }
 
-  addListenerToVideoEvents() {
-    this.video.addEventListener("ended", this.onEndedVideo.bind(this));
-    this.video.addEventListener("error", this.onErrorVideo);
+  /**
+   * Events Handlers
+   */
+
+  onMouseOverHandler(e) {
+    if (this.isPlayed) this.controll.showControll();
   }
 
-  removeListenerToVideoEvents() {
-    this.video.removeEventListener("ended", this.onEndedVideo.bind(this));
-    this.video.removeEventListener("error", this.onErrorVideo);
+  onMouseOutHandler(e) {
+    if (this.isPlayed) this.controll.hiddenControll();
+  }
+
+  onPlayingVideo(e) {
+    this.isPlayed = true;
+  }
+
+  onPauseVideo(e) {
+    this.isPlayed = false;
   }
 
   onErrorVideo(e) {
@@ -71,6 +105,10 @@ class Player {
   onEndedVideo(e) {
     this.updatePauseControll();
   }
+
+  /**
+   * DOM Elements
+   */
 
   createVideoElement(src_video) {
     let source = this.createSourceElement(src_video);
