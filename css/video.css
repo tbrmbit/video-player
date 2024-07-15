@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: bottom 1s;
+  transition: bottom .5s;
 }
 
 .video-player .vdp-controll .vdp-play-pause {
@@ -155,7 +155,7 @@
 }
 
 .vdp-controll-down {
-  bottom: -60px !important;
+  bottom: -50px !important;
 }
 
 .vdp--invisible {

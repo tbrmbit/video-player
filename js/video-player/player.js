@@ -75,6 +75,7 @@ class Player {
 
   updatePauseControll() {
     this.controll.updateControll("pause");
+    this.controll.showControll();
     this.video.pause();
   }
 
